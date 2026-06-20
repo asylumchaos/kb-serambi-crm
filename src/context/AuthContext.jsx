@@ -15,6 +15,7 @@ export function AuthProvider({ children }) {
       .eq('id', userId)
       .single()
     setProfile(data)
+    setLoading(false)
   }
 
   useEffect(() => {
