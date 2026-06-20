@@ -9,11 +9,16 @@ export function AuthProvider({ children }) {
   const [loading, setLoading] = useState(true)
 
   async function fetchProfile(userId) {
-    const { data } = await supabase
-      .from('profiles')
-      .select('*')
-      .eq('id', userId)
-      .single()
+    const { data, error } = await supabase
+  .from('profiles')
+  .select('*')
+  .eq('id', userId)
+  .single()
+
+console.log('PROFILE DATA:', data)
+console.log('PROFILE ERROR:', error)
+
+setProfile(data)
     setProfile(data)
     setLoading(false)
   }
